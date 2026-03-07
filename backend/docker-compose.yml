@@ -1,0 +1,65 @@
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    restart: always
+    env_file:
+      - ./auth-service/.env
+    depends_on:
+      - mysql
+    ports:
+      - "5000:5000"
+
+  # hotel-service:
+  #   build: ./hotel-service
+  #   container_name: hotel-service
+  #   restart: always
+  #   env_file:
+  #     - ./hotel-service/.env
+  #   depends_on:
+  #     - mysql
+  #   ports:
+  #     - "5001:5001"
+
+  # booking-service:
+  #   build: ./booking-service
+  #   container_name: booking-service
+  #   restart: always
+  #   env_file:
+  #     - ./booking-service/.env
+  #   depends_on:
+  #     - mysql
+  #   ports:
+  #     - "5002:5002"
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    restart: always
+    depends_on:
+      - auth-service
+      # - hotel-service
+      # - booking-service
+    ports:
+      - "8000:8000"
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+volumes:
+  mysql_data:
