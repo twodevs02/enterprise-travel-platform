@@ -3,5 +3,5 @@ import dotenv from 'dotenv';
 dotenv.config()
 const PORT = process.env.PORT || 5007
 app.listen(PORT, ()=>{
-    console.log(`User service running on http://localhost:${PORT}`)
+    console.log(`Auth service running on http://localhost:${PORT}`)
 })

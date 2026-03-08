@@ -2,9 +2,15 @@ import {
   Drawer,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
   Toolbar
 } from "@mui/material";
+
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import HotelIcon from "@mui/icons-material/Hotel";
+import BookIcon from "@mui/icons-material/Book";
+import PersonIcon from "@mui/icons-material/Person";
 
 import { Link } from "react-router-dom";
 
@@ -16,10 +22,8 @@ function Sidebar() {
       variant="permanent"
       sx={{
         width: drawerWidth,
-        flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: drawerWidth,
-          boxSizing: "border-box"
+          width: drawerWidth
         }
       }}
     >
@@ -28,19 +32,31 @@ function Sidebar() {
       <List>
 
         <ListItemButton component={Link} to="/dashboard">
-          <ListItemText primary="Dashboard" />
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard"/>
         </ListItemButton>
 
         <ListItemButton component={Link} to="/hotels">
-          <ListItemText primary="Hotels" />
+          <ListItemIcon>
+            <HotelIcon />
+          </ListItemIcon>
+          <ListItemText primary="Hotels"/>
         </ListItemButton>
 
         <ListItemButton component={Link} to="/bookings">
-          <ListItemText primary="Bookings" />
+          <ListItemIcon>
+            <BookIcon />
+          </ListItemIcon>
+          <ListItemText primary="Bookings"/>
         </ListItemButton>
 
         <ListItemButton component={Link} to="/profile">
-          <ListItemText primary="Profile" />
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profile"/>
         </ListItemButton>
 
       </List>

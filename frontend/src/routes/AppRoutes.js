@@ -11,10 +11,11 @@ import Layout from "../components/layout/Layout";
 
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
+import { useAuth } from "../context/AuthContext";
 
 function AppRoutes() {
 
-  const isAuthenticated = true //ter replace with token check
+  const { isAuthenticated } = useAuth();
 
   return (
     <BrowserRouter>
